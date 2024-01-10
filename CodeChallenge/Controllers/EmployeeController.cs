@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using CodeChallenge.Services;
 using CodeChallenge.Models;
+using CodeChallenge.Services.Interfaces;
 
 namespace CodeChallenge.Controllers
 {
