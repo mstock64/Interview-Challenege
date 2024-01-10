@@ -48,8 +48,10 @@ namespace CodeChallenge.Tests.Integration
             //Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 
             var reportingStructure = response.DeserializeContent<ReportingStructure>();
-            Assert.IsTrue(reportingStructure.NumberOfReports == 0);
+            Assert.IsTrue(reportingStructure.NumberOfReports == 4);
             Assert.IsNotNull(reportingStructure.Employee);
+            Assert.AreEqual(reportingStructure.Employee.FirstName, "John");
+            Assert.AreEqual(reportingStructure.Employee.FirstName, "Lennon");
 
         }
         [TestMethod]
