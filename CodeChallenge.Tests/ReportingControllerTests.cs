@@ -17,7 +17,7 @@ namespace CodeChallenge.Tests.Integration
     {
         private static HttpClient _httpClient;
         private static TestServer _testServer;
-        private const string PATH = "api/reportingstructure/";
+        private const string PATH = "api/reports/";
         [ClassInitialize]
         // Attribute ClassInitialize requires this signature
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
@@ -38,22 +38,26 @@ namespace CodeChallenge.Tests.Integration
         public void ShouldProvideNumberOfDirectReportsGreaterThanZero()
         {
             // Arrange
-            var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86";
+            var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
+            var expectedFirstName = "John";
+            var expectedLastName = "Lennon";
 
-            // Act
-            var postRequestTask = _httpClient.GetAsync($"api/Reports/{employeeId}");
-            var response = postRequestTask.Result;
+            // Execute
+            var getRequestTask = _httpClient.GetAsync($"api/reports/{employeeId}");
+            var response = getRequestTask.Result;
 
             // Assert
-            //Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            var employee = response.DeserializeContent<ReportingStructure>();
+            Assert.AreEqual(expectedFirstName, employee.Employee.FirstName);
+            Assert.AreEqual(expectedLastName, employee.Employee.LastName);
+            Assert.AreEqual(4, employee.NumberOfReports);
+        }   
 
-            var reportingStructure = response.DeserializeContent<ReportingStructure>();
-            Assert.IsTrue(reportingStructure.NumberOfReports == 4);
-            Assert.IsNotNull(reportingStructure.Employee);
-            Assert.AreEqual(reportingStructure.Employee.FirstName, "John");
-            Assert.AreEqual(reportingStructure.Employee.FirstName, "Lennon");
 
-        }
+
+
+         
         [TestMethod]
         public void ShouldProvideNullResponse()
         {
@@ -61,11 +65,11 @@ namespace CodeChallenge.Tests.Integration
             var employeeId = "null";
 
             // Act
-            var postRequestTask = _httpClient.GetAsync($"api/reportingstructure/{employeeId}");
-            var response = postRequestTask.Result;
+            var getRequestTask = _httpClient.GetAsync($"{PATH}{employeeId}");
+            var response = getRequestTask.Result;
 
             // Assert
-            Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
 
         }
     }
