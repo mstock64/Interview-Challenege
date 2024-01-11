@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3ml3hjeGdRcTUawHBS9C572nPu4dYapA03JrOTl5xNfU2mZwkEAJZbPL2CpVrg4t7DSllyx4foir0LKFv+XcXQ==",
+  "dgSpecHash": "ZpRHbOAXF0jXRPh9y7tH9xlt/IdktMfyV0J/eLd2e56BGaFFRCPe5c7ghl9qL0ux9yAjnv52FkeThZrB7Zxhig==",
   "success": true,
-  "projectFilePath": "C:\\Users\\stock\\Source\\Repos\\mstock64\\Interview-Challenege\\CodeChallenge.Tests\\CodeChallenge.Tests.Integration.csproj",
+  "projectFilePath": "c:\\Users\\stock\\Documents\\Super Important\\Trst\\Interview-Challenege\\CodeChallenge.Tests\\CodeChallenge.Tests.Integration.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stock\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.5\\microsoft.aspnetcore.jsonpatch.6.0.5.nupkg.sha512",
     "C:\\Users\\stock\\.nuget\\packages\\microsoft.aspnetcore.mvc.testing\\6.0.5\\microsoft.aspnetcore.mvc.testing.6.0.5.nupkg.sha512",
@@ -76,5 +76,12 @@
     "C:\\Users\\stock\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\stock\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file c:\\Users\\stock\\Documents\\Super Important\\Trst\\Interview-Challenege\\CodeChallenge.Tests\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cnqvQKm8KKcyz1LxxA4qFyehrSgBJJRJtusYeLsR9eBswOLLFhhJ28ERsHu6TynSEGHLNYdkyoepWGn5L80YsQ==",
+  "dgSpecHash": "WLc4ykSB5cn4m86UNOlneDKpPgQx93nd7yoCs+nl/W8ct8grmtNUJLVW66iHb5LyAlKhYzXcU9jAeFg7OQRkaw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\stock\\Source\\Repos\\mstock64\\Interview-Challenege\\CodeChallenge\\CodeChallenge.csproj",
+  "projectFilePath": "c:\\Users\\stock\\Documents\\Super Important\\Trst\\Interview-Challenege\\CodeChallenge\\CodeChallenge.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stock\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.5\\microsoft.aspnetcore.jsonpatch.6.0.5.nupkg.sha512",
     "C:\\Users\\stock\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -23,5 +23,12 @@
     "C:\\Users\\stock\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\stock\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file c:\\Users\\stock\\Documents\\Super Important\\Trst\\Interview-Challenege\\CodeChallenge\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
