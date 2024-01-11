@@ -34,16 +34,15 @@ namespace CodeChallenge.Tests.Integration
             _httpClient.Dispose();
             _testServer.Dispose();
         }
-        // Happy Path
+        
         [TestMethod]
-        public void CreateCompensationRecord_ShouldCreateNewCompansionRecord()
+        [DataRow("16a596ae-edd3-4847-99fe-c4518e82c86")]
+        public void CreateCompensationRecord_ShouldCreateNewCompansionRecord(string id)
         {
             // Arrange
-            var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86";
-            
             var compansation = new Compensation()
             {
-                Employee = employeeId,
+                Employee = id,
                 Salary = 100000.00m,
                 EffectiveDate = DateTime.Now.ToShortDateString(),
             };
@@ -65,7 +64,7 @@ namespace CodeChallenge.Tests.Integration
 
         }
 
-        // Unhappy Path
+        
         [TestMethod]
         public void CreateCompensationRecord_ShouldReturnBadRequest()
         {
@@ -85,43 +84,33 @@ namespace CodeChallenge.Tests.Integration
         public void GetCompensationRecord_ShouldReturnValidRecord()
         {
             // Arrange
-            var employeeId = "03aa1462-ffa9-4978-901b-7c001562cf6f";
-
+            var employeeId = "62c1084e-6e34-4630-93fd-9153afb65309";
             
-            var compansation = new Compensation()
-            {
-                Employee = employeeId,
-                Salary = 100000.00m,
-                EffectiveDate = DateTime.Now.ToShortDateString(),
-            };
-
-
             // Act
-            var postRequestTask = _httpClient.PostAsync($"{PATH}", new StringContent(JsonConvert.SerializeObject(compansation), Encoding.UTF8, "application/json"));
-            var response = postRequestTask.Result;
-
-            // Assert
-            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
-
-            var result = response.DeserializeContent<Compensation>();
-
-            Assert.IsNotNull(result);
-            Assert.AreEqual(result.Salary, compansation.Salary);
-            Assert.AreEqual(result.EffectiveDate, compansation.EffectiveDate);
-            Assert.AreEqual(result.Employee, compansation.Employee);
-
-
-            // Act
+            CreateCompensationRecord_ShouldCreateNewCompansionRecord(employeeId);
             var getRequestTask = _httpClient.GetAsync($"{PATH}/{employeeId}");
-            response = getRequestTask.Result;
+            var response = getRequestTask.Result;
 
             // Assert
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 
-            result = response.DeserializeContent<Compensation>();
+            var result = response.DeserializeContent<Compensation>();
 
             Assert.IsNotNull(result);
 
+
+        }
+
+        [TestMethod]
+        public void GetCompensationRecord_ReturnsBadRequestError()
+        {
+           
+            // Act
+            var getRequestTask = _httpClient.GetAsync($"{PATH}/THISISNOTGOINGTOWORK");
+            var response = getRequestTask.Result;
+
+            // Assert
+            Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
 
         }
     }
