@@ -20,14 +20,14 @@ namespace CodeChallenge.Controllers
         [HttpGet("{id}")]
         public IActionResult GetNumberOfReports(String id)
         {
-            _logger.LogDebug($"Received GET request for Number of Employee Reports -- ID:'{id}'");
+            _logger.LogDebug($"Received GET request for number of employee reports -- EmployeeId:'{id}'");
 
             var numberOfReports = _reportingService.GetNumberOfReports(id);
 
             if (numberOfReports == null)
-                return BadRequest("Invalid Data Provided");
+                return BadRequest("Invalid data provided");
 
-            _logger.LogDebug($"Successfully Served GET request for Number of Employee Reports -- ID '{id}'");
+            _logger.LogDebug($"Successfully Served GET request for number of employee reports -- EmployeeId '{id}'");
 
             return Ok(numberOfReports);
         }

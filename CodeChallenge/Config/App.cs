@@ -2,6 +2,7 @@
 
 using CodeChallenge.Data;
 using CodeChallenge.Repositories;
+using CodeChallenge.Repositories.Interfaces;
 using CodeChallenge.Services;
 using CodeChallenge.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -45,7 +46,8 @@ namespace CodeChallenge.Config
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IEmployeeRepository, EmployeeRespository>();
             services.AddScoped<IReportingService, ReportingService>();
-
+            services.AddScoped<ICompensationService, CompensationService>();
+            services.AddScoped<ICompensationRepository, CompensationRepository>();
             services.AddControllers();
         }
 

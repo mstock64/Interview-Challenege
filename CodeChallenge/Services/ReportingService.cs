@@ -8,14 +8,19 @@ namespace CodeChallenge.Services
     public class ReportingService : IReportingService
     {
         private readonly IEmployeeRepository _employeeRepository;
-        private readonly ILogger<EmployeeService> _logger;
+        private readonly ILogger<ReportingService> _logger;
 
-        public ReportingService(IEmployeeRepository employeeRepository, ILogger<EmployeeService> logger)
+        public ReportingService(IEmployeeRepository employeeRepository, ILogger<ReportingService> logger)
         {
             _employeeRepository = employeeRepository;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Handles Error Handling for grabbing an Employee Record and filling in 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ReportingStructure GetNumberOfReports(string id)
         {
             var employee = _employeeRepository.GetById(id);
