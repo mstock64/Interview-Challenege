@@ -15,6 +15,11 @@ namespace CodeChallenge.Services
             _compensationRepository = compensationRepository;
         }
 
+        /// <summary>
+        /// Create and Stores new Compensation records
+        /// </summary>
+        /// <param name="compensation"></param>
+        /// <returns></returns>
         public Compensation Create(Compensation compensation)
         {
             if (compensation == null)
@@ -28,7 +33,11 @@ namespace CodeChallenge.Services
 
             return compensation;
         }
-
+        /// <summary>
+        /// Retrieves Conpensation from Repository Layer using the id as key
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Compensation GetById(string id) 
         {
             if(!string.IsNullOrEmpty(id))

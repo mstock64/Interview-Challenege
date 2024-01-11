@@ -16,6 +16,11 @@ namespace CodeChallenge.Services
             _logger = logger;
         }
 
+        /// <summary>
+        /// Handles Error Handling for grabbing an Employee Record and filling in 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ReportingStructure GetNumberOfReports(string id)
         {
             var employee = _employeeRepository.GetById(id);
