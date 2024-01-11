@@ -35,7 +35,7 @@ namespace CodeChallenge.Tests.Integration
         }
         // Happy Path
         [TestMethod]
-        public void ShouldProvideNumberOfDirectReportsGreaterThanZero()
+        public void GetReportingStructure_ReturnsOKWithValidRequestData()
         {
             // Arrange
             var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
@@ -59,7 +59,7 @@ namespace CodeChallenge.Tests.Integration
 
          
         [TestMethod]
-        public void ShouldProvideNullResponse()
+        public void GetReportingStructure_ReturnsBadRequestWithInvalidTestData()
         {
             //Arrange
             var employeeId = "null";

@@ -34,7 +34,7 @@ namespace CodeChallenge.Tests.Integration
             _httpClient.Dispose();
             _testServer.Dispose();
         }
-        // Happy Path
+        
         [TestMethod]
         public void CreateCompensationRecord_ShouldCreateNewCompansionRecord()
         {
@@ -65,7 +65,7 @@ namespace CodeChallenge.Tests.Integration
 
         }
 
-        // Unhappy Path
+        
         [TestMethod]
         public void CreateCompensationRecord_ShouldReturnBadRequest()
         {
@@ -122,6 +122,19 @@ namespace CodeChallenge.Tests.Integration
 
             Assert.IsNotNull(result);
 
+
+        }
+
+        [TestMethod]
+        public void GetCompensationRecord_ReturnsBadRequestError()
+        {
+           
+            // Act
+            var getRequestTask = _httpClient.GetAsync($"{PATH}/THISISNOTGOINGTOWORK");
+            var response = getRequestTask.Result;
+
+            // Assert
+            Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
 
         }
     }
