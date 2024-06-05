@@ -35,7 +35,7 @@ namespace CodeChallenge.Tests.Integration
         }
         // Happy Path
         [TestMethod]
-        public void CompensationController_GetReportingStructure_ReturnsCorrectCompensationRecord()
+        public void ReportingController_GetReportingStructure_ReturnsCorrectCompensationRecord()
         {
             // Arrange
             var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
@@ -56,7 +56,7 @@ namespace CodeChallenge.Tests.Integration
 
          
         [TestMethod]
-        public void CompensationController_GetReportingStructure_ReturnsBadRequestWithInvalidEmployeeInformation()
+        public void ReportingController_GetReportingStructure_ReturnsBadRequestWithInvalidEmployeeInformation()
         {
             //Arrange
             var employeeId = "null";

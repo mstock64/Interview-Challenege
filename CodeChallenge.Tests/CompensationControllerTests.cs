@@ -37,7 +37,7 @@ namespace CodeChallenge.Tests.Integration
         
         [TestMethod]
         [DataRow("16a596ae-edd3-4847-99fe-c4518e82c86")]
-        public void CreateCompensationRecord_ShouldCreateNewCompansionRecord(string id)
+        public void CompensationController_CreateCompensationRecord_ShouldCreateNewCompansionRecord(string id)
         {
             // Arrange
             var compansation = new Compensation()
@@ -66,9 +66,8 @@ namespace CodeChallenge.Tests.Integration
 
         
         [TestMethod]
-        public void CreateCompensationRecord_ShouldReturnBadRequest()
+        public void CompensationController_CreateCompensationRecord_ShouldReturnBadRequest()
         {
-            // Arrange
 
             // Act
             var postRequestTask = _httpClient.PostAsync($"{PATH}", new StringContent(JsonConvert.SerializeObject(""), Encoding.UTF8, "application/json"));
@@ -81,13 +80,13 @@ namespace CodeChallenge.Tests.Integration
 
 
         [TestMethod]
-        public void GetCompensationRecord_ShouldReturnValidRecord()
+        public void CompensationController_GetCompensationRecord_ShouldReturnValidRecord()
         {
             // Arrange
             var employeeId = "62c1084e-6e34-4630-93fd-9153afb65309";
-            
+
             // Act
-            CreateCompensationRecord_ShouldCreateNewCompansionRecord(employeeId);
+            CompensationController_CreateCompensationRecord_ShouldCreateNewCompansionRecord(employeeId);
             var getRequestTask = _httpClient.GetAsync($"{PATH}/{employeeId}");
             var response = getRequestTask.Result;
 
@@ -102,7 +101,7 @@ namespace CodeChallenge.Tests.Integration
         }
 
         [TestMethod]
-        public void GetCompensationRecord_ReturnsBadRequestError()
+        public void CompensationController_GetCompensationRecord_ReturnsBadRequestError()
         {
            
             // Act
