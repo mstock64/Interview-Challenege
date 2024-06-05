@@ -35,7 +35,7 @@ namespace CodeChallenge.Tests.Integration
         }
         // Happy Path
         [TestMethod]
-        public void GetReportingStructure_ReturnsOKWithValidRequestData()
+        public void CompensationController_GetReportingStructure_ReturnsCorrectCompensationRecord()
         {
             // Arrange
             var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
@@ -43,7 +43,7 @@ namespace CodeChallenge.Tests.Integration
             var expectedLastName = "Lennon";
 
             // Execute
-            var getRequestTask = _httpClient.GetAsync($"api/reports/{employeeId}");
+            var getRequestTask = _httpClient.GetAsync($"{PATH}{employeeId}");
             var response = getRequestTask.Result;
 
             // Assert
@@ -54,12 +54,9 @@ namespace CodeChallenge.Tests.Integration
             Assert.AreEqual(4, employee.NumberOfReports);
         }   
 
-
-
-
          
         [TestMethod]
-        public void GetReportingStructure_ReturnsBadRequestWithInvalidTestData()
+        public void CompensationController_GetReportingStructure_ReturnsBadRequestWithInvalidEmployeeInformation()
         {
             //Arrange
             var employeeId = "null";

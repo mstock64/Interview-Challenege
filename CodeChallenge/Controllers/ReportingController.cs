@@ -25,9 +25,11 @@ namespace CodeChallenge.Controllers
             var numberOfReports = _reportingService.GetNumberOfReports(id);
 
             if (numberOfReports == null)
+            {
                 return BadRequest("Invalid data provided");
+            }
 
-            _logger.LogDebug($"Successfully Served GET request for number of employee reports -- EmployeeId '{id}'");
+            _logger.LogDebug($"Successfully served GET request for number of employee reports -- EmployeeId '{id}'");
 
             return Ok(numberOfReports);
         }

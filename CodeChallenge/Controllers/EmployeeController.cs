@@ -35,12 +35,16 @@ namespace CodeChallenge.Controllers
         [HttpGet("{id}", Name = "getEmployeeById")]
         public IActionResult GetEmployeeById(String id)
         {
-            _logger.LogDebug($"Received employee get request for '{id}'");
+            _logger.LogDebug($"Received employee get request for EmployeeId: '{id}'");
 
             var employee = _employeeService.GetById(id);
 
             if (employee == null)
+            {
                 return NotFound();
+            }
+
+            _logger.LogDebug($"Sucessfully served Employee GET request for EmployeeId: '{id}'");
 
             return Ok(employee);
         }
@@ -51,10 +55,15 @@ namespace CodeChallenge.Controllers
             _logger.LogDebug($"Recieved employee update request for '{id}'");
 
             var existingEmployee = _employeeService.GetById(id);
+
             if (existingEmployee == null)
+            {
                 return NotFound();
+            }
 
             _employeeService.Replace(existingEmployee, newEmployee);
+
+            _logger.LogDebug($"Sucessfully served employee PUT request for EmployeeId: '{id}'");
 
             return Ok(newEmployee);
         }

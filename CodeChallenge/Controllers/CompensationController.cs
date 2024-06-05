@@ -22,7 +22,7 @@ namespace CodeChallenge.Controllers
         [HttpGet("{id}")]
         public IActionResult GetCompensation(String id)
         {
-            _logger.LogDebug($"Recived Request to retrieve Compensation for EmployeeId: {id}");
+            _logger.LogDebug($"Recived GET Request for Compensation record for EmployeeId: {id}");
             
             var compensation = _compensationService.GetById(id);
            
@@ -42,7 +42,7 @@ namespace CodeChallenge.Controllers
         [HttpPost]
         public IActionResult CreateCompensationRecord([FromBody] Compensation compensation)
         {
-            _logger.LogDebug($"Creating compensation record for EmployeeId: {compensation?.Employee}");
+            _logger.LogDebug($"Creating Compensation record for EmployeeId: {compensation?.Employee}");
             
             var result = _compensationService.Create(compensation);
 
@@ -53,7 +53,7 @@ namespace CodeChallenge.Controllers
             }
             else 
             {
-                _logger.LogDebug($"Succesfully created compensation record for EmployeeId: {compensation?.Employee}");
+                _logger.LogDebug($"Succesfully created Compensation record for EmployeeId: {compensation?.Employee}");
                 return Created("/api/compensation",compensation);
             }
             
